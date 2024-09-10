@@ -52,6 +52,7 @@ func newPostWinRequest(name string) *http.Request {
 func TestGETPlayers(t *testing.T) {
 	store := StubPlayerStore{
 		map[string]int{"Pepper": 20, "Floyd": 10},
+		nil,
 	}
 
 	server := &PlayerServer{&store}
