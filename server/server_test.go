@@ -15,6 +15,10 @@ type StubPlayerStore struct {
 	league   []Player
 }
 
+func (s *StubPlayerStore) GetLeague() []Player {
+	return s.league
+}
+
 func (s *StubPlayerStore) GetPlayerScore(name string) int {
 	score := s.scores[name]
 
@@ -105,7 +109,6 @@ func TestLeague(t *testing.T) {
 
 		request, _ := http.NewRequest(http.MethodGet, "/league", nil)
 		response := httptest.NewRecorder()
-
 		server.ServeHTTP(response, request)
 
 		var got []Player
